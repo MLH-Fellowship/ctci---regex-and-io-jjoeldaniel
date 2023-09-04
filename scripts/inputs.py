@@ -9,8 +9,9 @@ def getFileSize(file: os.DirEntry[str]):
 
 def splitFile(file):
     """Partitions file into subfiles of 499 bytes or less."""
-    os.system(f"split -d -C 499 inputs/split/{file.name} inputs/split/{file.name}-")
-    os.system(f"rm -f inputs/split/{file.name}-00")
+    os.makedirs("outputs/split", exist_ok=True)
+    os.system(f"split -d -C 499 inputs/split/{file.name} outputs/split/{file.name}-")
+    os.system(f"rm -f outputs/split/{file.name}-00")
 
 
 # iterate through the files in the inputs directory
